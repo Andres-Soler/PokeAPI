@@ -4,7 +4,8 @@ async function pokemon(id) {
         const data = await res.json();
 
         var root = document.getElementById("root");
-        let tipoPoke = data.types.map(type => `<span>${type.type.name}</span>`);
+        
+        let tipoPoke = data.types.map(type => `<span>${type.type.name}</span>`).join(', ');
 
         root.innerHTML = `
         <section class="c-detalle">
@@ -19,7 +20,10 @@ async function pokemon(id) {
             <p><strong>Tipos:</strong> ${tipoPoke}</p>
         </section>
         `;
-    } 
+    } catch (error) {
+        console.error('Error:', error);
+        var root = document.getElementById("root");
+        root.innerHTML = `<p>Error al cargar los datos del Pokémon. Intenta nuevamente.</p>`;
     }
 }
 
