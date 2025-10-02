@@ -1,3 +1,19 @@
+function generarLista(arraypokemones) {
+    let listaHTML = "";
+    for (let i = 0; i < arraypokemones.length; i++) {
+        let id = arraypokemonesi.url.split("/")[6];
+        listaHTML += `
+        <div class="c-lista-pokemon poke-${id}" onclick="Detalle('${id}')">
+            <p>#${id}</p>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png" width="auto" height="60" loading="lazy" alt="${arraypokemones[i].name}">
+            <p>${arraypokemones[i].name}</p>
+        </div>`;
+    }
+
+    return listaHTML;
+}
+
+
 function buscadorfunction(cualquiercosa) {
     console.log(cualquiercosa);
 }
@@ -23,10 +39,6 @@ function home() {
         "dragon", "dark", "fairy", "stellar", "unknown"
     ];
 
-    function FiltroConexion(otracosa) {
-        alert(otracosa);
-    }
-
     const contenedorFiltro = document.createElement("section");
     contenedorFiltro.classList.add("tipos-container");
 
@@ -40,7 +52,9 @@ function home() {
         });
 
         // Agregar el botón al contenedor
+        const listaHTML = generarLista(pokemones);
         contenedorFiltro.appendChild(btn);
+        contenedorLista.innerHTML = listaHTML;
     }
 
     // Agregar el contenedor de filtro al root
